@@ -12,7 +12,7 @@ $(document).ready(function() {
         var items = [];
         $.each(data, function(key, val) {
             console.log(key);
-            console.log(value);
+            console.log(val);
             items.push("<li id='" + key + "'>" + val + "</li>");
         });
 
