@@ -17,6 +17,6 @@ $(document).ready(function() {
         $("<ul/>", {
             "class": "my-new-list",
             html: items.join("")
-        }).appendTo("body");
+        }).appendTo("#container");
     });
 });
