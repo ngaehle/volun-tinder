@@ -1,8 +1,8 @@
 $(document).ready(function() {
     var url = "orgs.json";
     // $.ajax({
-    //     dataType: "json",
-    //     url: url,
+    //     dataType: "text",
+    //     url: "OrganizationData.csv",
     //     data: data,
     //     success: function(data) {
     //         console.log(data);
