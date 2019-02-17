@@ -11,6 +11,8 @@ $(document).ready(function() {
     $.getJSON(url, function(data) {
         var items = [];
         $.each(data, function(key, val) {
+            console.log(key);
+            console.log(value);
             items.push("<li id='" + key + "'>" + val + "</li>");
         });
 
