@@ -1,4 +1,4 @@
-[{
+var orgs = [{
         "org": "UMSL Business",
         "keyword": "mentoring"
     },
@@ -28,3 +28,5 @@
         "keyword": "mentoring"
     }
 ]
+
+export default orgs;

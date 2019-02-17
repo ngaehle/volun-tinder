@@ -1,3 +1,6 @@
+var orgs = require("orgs.js");
+var events = require("events.js");
+
 window.addEventListener('load', function() {
     console.log("loaded");
     var swiper = {
@@ -24,12 +27,12 @@ window.addEventListener('load', function() {
             var direction,
                 moved
             if (swiper.touchEndX <= swiper.touchStartX) {
-                moved = swiper.touchStartX - swiper.touchEndX
-                direction = "left"
+                moved = swiper.touchStartX - swiper.touchEndX;
+                direction = "left" + orgs;
             }
             if (swiper.touchEndX >= swiper.touchStartX) {
-                moved = swiper.touchEndX - swiper.touchStartX
-                direction = "right"
+                moved = swiper.touchEndX - swiper.touchStartX;
+                direction = "right";
             }
             console.log(direction);
             // if (moved > swiper.minSwipePixels && direction !== "undefined") {
