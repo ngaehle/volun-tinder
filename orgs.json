@@ -1,4 +1,4 @@
-var myObj = [{
+myObj = [{
         "org": "UMSL Business",
         "keyword": "mentoring"
     },
