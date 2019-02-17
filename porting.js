@@ -13,12 +13,12 @@ $(document).ready(function() {
         $.each(data, function(key, val) {
             console.log(key);
             console.log(val);
-            items.push("<li id='" + key + "'>" + val + "</li>");
+            // items.push("<li id='" + key + "'>" + val + "</li>");
         });
 
-        $("<ul/>", {
-            "class": "my-new-list",
-            html: items.join("")
-        }).appendTo("#container");
+        // $("<ul/>", {
+        //     "class": "my-new-list",
+        //     html: items.join("")
+        // }).appendTo("#container");
     });
 });
