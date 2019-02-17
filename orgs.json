@@ -1,4 +1,4 @@
-myObj = [{
+[{
         "org": "UMSL Business",
         "keyword": "mentoring"
     },
@@ -28,5 +28,3 @@ myObj = [{
         "keyword": "mentoring"
     }
 ]
-
-export default myObj;
