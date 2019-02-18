@@ -1,34 +1,57 @@
-$(document).ready(function() {
-    FontAwesome();
-    SourceSansPro('html, body');
-});
+var orgs = require("orgs.js");
+var events = require("events.js");
 
-var newUser = function() {
-    var url = "orgs.json";
-    $.getJSON(url, function(data) {
-        $.each(data, function(key, val) {
-            console.log("key", key);
-            console.log("val", val);
-            $('.active .org').text(val["org"]);
-            // $('.active .photo').css('backgroundImage', 'url(' + user.picture.large + ')');
-            $('.active .keyword').text(val["keyword"]);
-            // items.push("<li id='" + key + "'>" + val + "</li>");
-        });
-    });
-};
+window.addEventListener('load', function() {
+    console.log("loaded");
+    var swiper = {
 
-$(function() {
-    newUser();
-    $('.item:lt(3)').show();
-    $('.item:eq(0)').addClass('active');
-    $('.item:eq(1)').addClass('next');
-    $('.item:eq(2)').addClass('last');
-    var control = function(e) {
-        $('.active').switchClass('active', e);
-        $('.next').switchClass('next', 'active');
-        $('.last').switchClass('last', 'next').next().show().addClass('last');
-        newUser();
-    };
-    $('.pass button').on('click', function() { control('remove'); });
-    $('.like button').on('click', function() { control('save'); });
-});
+        touchStartX: 0,
+        touchEndX: 0,
+        minSwipePixels: 30,
+        detectionZone: undefined,
+        swiperCallback: function() {},
+
+        init: function(detectionZone, callback) {
+            console.log("init");
+            swiper.swiperCallback = callback
+            detectionZone.addEventListener('touchstart', function(event) {
+                swiper.touchStartX = event.changedTouches[0].screenX;
+            }, false);
+            detectionZone.addEventListener('touchend', function(event) {
+                swiper.touchEndX = event.changedTouches[0].screenX;
+                swiper.handleSwipeGesture();
+            }, false);
+        },
+
+        handleSwipeGesture: function() {
+            var direction,
+                moved
+            if (swiper.touchEndX <= swiper.touchStartX) {
+                moved = swiper.touchStartX - swiper.touchEndX;
+                direction = "left" + orgs;
+            }
+            if (swiper.touchEndX >= swiper.touchStartX) {
+                moved = swiper.touchEndX - swiper.touchStartX;
+                direction = "right";
+            }
+            console.log(direction);
+            // if (moved > swiper.minSwipePixels && direction !== "undefined") {
+            //     swiper.swipe(direction, moved)
+            // }
+        },
+
+        swipe: function(direction, movedPixels) {
+            var ret = {}
+            ret.direction = direction
+            ret.movedPixels = movedPixels
+            swiper.swiperCallback(ret)
+        }
+    }
+
+
+    var gestureZone = document.getElementById('container');
+    //var gestureZone = document;
+    swiper.init(gestureZone, function(e) {
+        console.log(e)
+    })
+}, false);

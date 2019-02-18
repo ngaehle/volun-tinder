@@ -12,54 +12,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="porting.js"></script>
-    <style>
-    #container {
-        text-align:center;
-    }
-    </style>
     <script>
-        
-        var orgsindex=0
-        var orgs = [{
-        "org": "UMSL Business",
-        "keyword": "mentoring",
-        "date": "2-15-19 to 2-17-19"
-    },
-
-    {
-        "org": "St Louis Zoo",
-        "keyword": "animals",
-        "date": "2-16-19"
-    },
-
-    {
-        "org": "Centene Charitable Foundation",
-        "keyword": "healthy rx",
-        "date": "2-18-19"
-    },
-
-    {
-        "org": "1904 Labs",
-        "keyword": "supply drive",
-        "date": "2-20-19"
-    },
-
-    {
-        "org": "Express Scripts Foundation",
-        "keyword": "health",
-        "date": "2-22-19"
-    },
-
-    {
-        "org": "Slalom",
-        "keyword": "education",
-        "date": "2-24-19"
-    }
-]
-
         window.addEventListener('load', function() {
             console.log("loaded");
-            var gestureZone = document.getElementById('container');
             var swiper = {
 
                 touchStartX: 0,
@@ -86,16 +41,12 @@
                     if (swiper.touchEndX <= swiper.touchStartX) {
                         moved = swiper.touchStartX - swiper.touchEndX
                         direction = "left"
-                        orgsindex++
-                        gestureZone.innerHTML=orgs[orgsindex].org
                     }
                     if (swiper.touchEndX >= swiper.touchStartX) {
                         moved = swiper.touchEndX - swiper.touchStartX
                         direction = "right"
-                        gestureZone.innerHTML="MATCHED!! "+ "<br>" + orgs[orgsindex].org + "<br>" + orgs[orgsindex].date
                     }
                     console.log(direction);
-                    
                     // if (moved > swiper.minSwipePixels && direction !== "undefined") {
                     //     swiper.swipe(direction, moved)
                     // }
@@ -108,11 +59,9 @@
                     swiper.swiperCallback(ret)
                 }
             }
-            
 
-            
-            gestureZone.innerHTML="Hello World: We are at UMSL HACK!"
-            gestureZone.innerHTML=orgs[orgsindex].org
+
+            var gestureZone = document.getElementById('container');
             //var gestureZone = document;
             swiper.init(gestureZone, function(e) {
                 console.log(e)
